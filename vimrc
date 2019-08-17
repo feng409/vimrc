@@ -434,3 +434,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 "====================vim-syntastic/syntastic 配置 ========
+
+" 相对行号
+set relativenumber
+
