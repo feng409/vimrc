@@ -93,6 +93,10 @@ Plugin 'tell-k/vim-autopep8'
 Plugin 'dantezhu/indent-python.vim'
 "vim 中文文档
 Plugin 'yianwillis/vimcdoc'
+"dash 中文插件
+Plugin 'keith/investigate.vim'
+let g:investigate_use_dash=1
+
 
 "powerline{ 插件对应的配置信息
 "set guifont=PowerlineSymbols for Powerline
@@ -141,7 +145,7 @@ autocmd FileType python setlocal completeopt-=preview
 let g:jedi#goto_command = "<leader>d"
 let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#goto_definitions_command = ""
-let g:jedi#documentation_command = "K"
+"let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-Q>"
 let g:jedi#rename_command = "<leader>r"
@@ -437,4 +441,9 @@ let g:syntastic_check_on_wq = 0
 
 " 相对行号
 set relativenumber
+
+"==================== investigate 设置 ==================
+nnoremap K :call investigate#Investigate('n')<CR>
+vnoremap K :call investigate#Investigate('v')<CR>
+"==================== investigate 设置 ==================
 
