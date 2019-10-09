@@ -186,7 +186,7 @@ let g:vimrc_homepage='eoyohe.cn'
 nmap <F4> :AuthorInfoDetect<cr>
 
 "====== tabbar 配置 =========
-nmap <C-P> :TagbarToggle<CR>
+nmap <C-Y> :TagbarToggle<CR>
 
 "autocmd VimEnter * UndotreeToggle
 nmap <C-U>  :UndotreeToggle<cr> "设置在通用模式下用Ctrl+t打开文件目录树
@@ -222,7 +222,7 @@ autocmd BufRead,BufNewFile *.md set filetype=markdown
 "跳转定义
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <F12> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "设置全局配置文件的路径  
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'  
@@ -299,7 +299,7 @@ endfun
 "autocmd! BufNewFile * call LoadTemplate()
 """"""""""""""""""""""""""""""""""""""""""""
 "ctrl的配置
-let g:ctrlp_map = '<leader>p'
+let g:ctrlp_map = '<C-P>'
 let g:ctrlp_cmd = 'CtrlP'
 map <leader>f :CtrlPMRU<CR>
 let g:ctrlp_custom_ignore = {
