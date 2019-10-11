@@ -39,15 +39,16 @@ Plugin 'Shougo/neocomplete.vim'
 Plugin 'scrooloose/nerdtree'
 "强大的自动补全插件
 Plugin 'Valloric/YouCompleteMe'
+"据说很强的机器学习训练的补全插件，然并卵
 Plugin 'zxqfl/tabnine-vim'
 "代码注释插件
 Plugin 'scrooloose/nerdcommenter'
-"代码块生成插件
+"代码块生成插件， 貌似没用到
 Plugin 'SirVer/ultisnips'
 "markdown语法高亮插件
 Plugin 'plasticboy/vim-markdown'
-"markdown实时预览插件，需要nodejs插件instant-markdown-d支持
-Plugin 'suan/vim-instant-markdown'
+"markdown实时预览插件，需要nodejs插件instant-markdown-d支持, 鸡肋，markdown还是用typora舒服
+"Plugin 'suan/vim-instant-markdown'
 "json格式化文件 --下载太慢,需要翻墙
 "Plugin 'axiaoxin/vim-json-line-format'
 "状态栏插件
@@ -81,7 +82,7 @@ Plugin 'chrisbra/csv.vim'
 Plugin 'tpope/vim-fugitive'
 " 环境替换插件，比如“替换为<
 Plugin 'tpope/vim-surround'
-" 缩进线
+" 缩进线, 花里花俏的，没配置到
 Plugin 'Yggdroot/indentLine'
 " 异步实时执行代码
 Plugin 'metakirby5/codi.vim'
@@ -93,7 +94,7 @@ Plugin 'tell-k/vim-autopep8'
 Plugin 'dantezhu/indent-python.vim'
 "vim 中文文档
 Plugin 'yianwillis/vimcdoc'
-"dash 中文插件
+"dash 中文插件,Mac OS only
 Plugin 'keith/investigate.vim'
 let g:investigate_use_dash=1
 
@@ -426,6 +427,7 @@ nmap <C-H>  :w<cr> :bp<cr>
 nmap <C-L>  :w<cr> :bn<cr> 
 nmap <M-L>  :tabmove +<cr>
 nmap <M-H>  :tabmove -<cr>
+nmap <C-M>  :only<cr>
 
 "====================vim-syntastic/syntastic 配置 ========
 set statusline+=%#warningmsg#
