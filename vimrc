@@ -448,3 +448,12 @@ nnoremap K :call investigate#Investigate('n')<CR>
 vnoremap K :call investigate#Investigate('v')<CR>
 "==================== investigate 设置 ==================
 
+"==================== nerdcommenter 设置 ==================
+if has('win32')
+  nmap <C-/> <leader>c<Space>
+  vmap <C-/> <leader>c<Space>
+else
+  nmap <C-_> <leader>c<Space>
+  vmap <C-_> <leader>c<Space>
+endif
+"==================== nerdcommenter 设置 ==================
