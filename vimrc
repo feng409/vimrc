@@ -98,6 +98,7 @@ Plugin 'yianwillis/vimcdoc'
 Plugin 'keith/investigate.vim'
 " git 代码行状态插件
 Plugin 'airblade/vim-gitgutter'
+Plugin 'easymotion/vim-easymotion'
 let g:investigate_use_dash=1
 
 
