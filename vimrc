@@ -96,6 +96,8 @@ Plugin 'dantezhu/indent-python.vim'
 Plugin 'yianwillis/vimcdoc'
 "dash 中文插件,Mac OS only
 Plugin 'keith/investigate.vim'
+" git 代码行状态插件
+Plugin 'airblade/vim-gitgutter'
 let g:investigate_use_dash=1
 
 
