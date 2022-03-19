@@ -32,8 +32,7 @@ esac
 git clone --depth 1 https://github.com/feng409/vimrc.git $HOME/.vim
 
 # install plugin by vundle
-git clone --depth 1 https://github.com/VundleVim/Vundle.vim.git Vundle.vim 
-mv Vundle.vim $HOME/.vim/bundle/Vundle.vim 
+git clone --depth 1 https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim  
 
 # alter git clone just for depth 1
 sed -i "s/git clone/git clone --depth 1/" $HOME/.vim/bundle/Vundle.vim/autoload/vundle/installer.vim 

@@ -38,9 +38,9 @@ Plugin 'Shougo/neocomplete.vim'
 "树形结构目录插件
 Plugin 'scrooloose/nerdtree'
 "强大的自动补全插件
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 "据说很强的机器学习训练的补全插件，然并卵
-Plugin 'zxqfl/tabnine-vim'
+"Plugin 'zxqfl/tabnine-vim'
 "代码注释插件
 Plugin 'scrooloose/nerdcommenter'
 "代码块生成插件， 貌似没用到
@@ -61,7 +61,7 @@ Plugin 'mbbill/undotree'
 "Plugin 'aperezdc/vim-template'
 "代码搜索工具
 Plugin 'mileszs/ack.vim'
-let g:ackprg = 'ag --nogroup --nocolor --column'
+let g:ackprg = 'rg --nogroup --nocolor --column'
 "Plugin 'cSyntaxAfter'
 "Python 补全提示插件
 Plugin 'davidhalter/jedi-vim'
@@ -100,6 +100,7 @@ Plugin 'keith/investigate.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'easymotion/vim-easymotion'
 let g:investigate_use_dash=1
+Plugin 'neoclide/coc.nvim'
 
 
 "powerline{ 插件对应的配置信息
@@ -220,88 +221,6 @@ autocmd BufRead,BufNewFile Appraisals set filetype=ruby
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 "autocmd Syntax javascript set syntax=jquery
 
-"=============================================================
-"=                   YouCompleteMe配置                       =
-"=============================================================
-"跳转定义
-nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <F12> :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-"设置全局配置文件的路径  
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'  
-
-"开启基于tag的补全，可以在这之后添加需要的标签路径  
-let g:ycm_collect_identifiers_from_tags_files = 1  
-
-"开启语义补全  
-let g:ycm_seed_identifiers_with_syntax = 1  
-
-"在接受补全后不分裂出一个窗口显示接受的项  
-set completeopt-=preview  
-
-"不显示开启vim时检查ycm_extra_conf文件的信息  
-let g:ycm_confirm_extra_conf=0  
-
-"每次重新生成匹配项，禁止缓存匹配项  
-let g:ycm_cache_omnifunc=0  
-
-"在注释中也可以补全  
-let g:ycm_complete_in_comments=1  
-
-"在字符串中也可以补全  
-let g:ycm_complete_in_comments=1  
-
-"输入第一个字符就开始补全  
-let g:ycm_min_num_of_chars_for_completion=1  
-
-"不查询ultisnips提供的代码模板补全，如果需要，设置成1即可  
-let g:ycm_use_ultisnips_completer=1
-
-"主动调用补全
-let g:ycm_key_invoke_completion = '<C-a>'
-"补全键
-let g:ycm_key_list_select_completion = ['<Down>', '<C-n>']
-
-
-highlight NonText guibg=#060606
-highlight Folded  guibg=#0A0A0A guifg=#9090D0
-
-
-
-" 打开javascript折叠
-let b:javascript_fold=1
-" 打开javascript对dom、html和css的支持
-let javascript_enable_domhtmlcss=1
-"工作目录随文件变
-"autocmd BufEnter * cd %:p:h
-
-"设置load_template 模板插件的模板目录
-let g:template_path = '~/.vim/template/'
-
-""""""""""""""""""""""""""""""""""""""""""""
-" 新建文件时，自动根据扩展名加载模板文件
-fun LoadTemplate()
-    "获取扩展名或者类型名
-    let ext = expand ("%:e")
-    let tpl = expand("~/.vim/template/".ext.".tpl")
-    if !filereadable(tpl)
-        echohl WarningMsg | echo "No template [".tpl."] for .".ext | echohl None
-        return
-    endif
-
-    "读取模板内容
-    silent execute "0r ".tpl
-    "指定光标位置
-    silent execute "normal G$"
-    silent call search("#cursor#", "w")
-    silent execute "normal 8x"
-    "进入插入模式
-    startinsert
-endfun
-"暂时没用到，ban了
-"autocmd! BufNewFile * call LoadTemplate()
-""""""""""""""""""""""""""""""""""""""""""""
 "ctrl的配置
 let g:ctrlp_map = '<C-P>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -355,7 +274,7 @@ set foldmethod=syntax
 ""打开文件是默认不折叠代码
 set foldlevelstart=99
 " 设置系统剪切板和vim默认剪切板同一个， 需要x11支持
-set clipboard^=unnamed,unnamedplus
+"set clipboard^=unnamed,unnamedplus
 "=============================================================
 "=                   按键映射                                =
 "=============================================================
@@ -444,7 +363,7 @@ let g:syntastic_check_on_wq = 0
 "====================vim-syntastic/syntastic 配置 ========
 
 " 相对行号
-set relativenumber
+"set relativenumber
 
 "==================== investigate 设置 ==================
 nnoremap K :call investigate#Investigate('n')<CR>
