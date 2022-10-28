@@ -44,7 +44,7 @@ Plugin 'scrooloose/nerdtree'
 "代码注释插件
 Plugin 'scrooloose/nerdcommenter'
 "代码块生成插件， 貌似没用到
-Plugin 'SirVer/ultisnips'
+"Plugin 'SirVer/ultisnips'
 "markdown语法高亮插件
 Plugin 'plasticboy/vim-markdown'
 "markdown实时预览插件，需要nodejs插件instant-markdown-d支持, 鸡肋，markdown还是用typora舒服
