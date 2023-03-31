@@ -15,65 +15,64 @@ if has("syntax")
 endif
 
 " 设置包括vundle和初始化相关的runtime path
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin()
 " 另一种选择, 指定一个vundle安装插件的路径
 "call vundle#begin('~/some/path/here')
 
 " 让vundle管理插件版本,必须
-Plugin 'ervandew/supertab'
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'gmarik/vundle'
-"Plugin 'Shougo/neocomplete.vim'
+Plug 'ervandew/supertab'
+Plug 'VundleVim/Vundle.vim'
+Plug 'gmarik/vundle'
+"Plug 'Shougo/neocomplete.vim'
 "树形结构目录插件
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 "代码注释插件
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 "代码块生成插件， 貌似没用到
-"Plugin 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 "markdown语法高亮插件
-Plugin 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown'
 "状态栏插件
-Plugin 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
 " airline 的 vcs支持
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " git 代码行状态插件
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 "全局搜索窗口
-Plugin 'vim-scripts/ctrlp.vim'
+Plug 'vim-scripts/ctrlp.vim'
 "撤销记录
-Plugin 'mbbill/undotree'
+Plug 'mbbill/undotree'
 "代码模板插件
-"Plugin 'aperezdc/vim-template'
+"Plug 'aperezdc/vim-template'
 "代码搜索工具
-Plugin 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
 let g:ackprg = 'rg --nogroup --nocolor --column'
 " 作者信息插件 安装好了后需要去将插件的目录名ftplugin 改为 plugin
-Plugin 'feng409/AuthorInfo'
+Plug 'feng409/AuthorInfo'
 " 多重括号高亮
-Plugin 'luochen1990/rainbow'
-Plugin 'taglist-plus'
+Plug 'luochen1990/rainbow'
+Plug 'yegappan/taglist'
 " 函数栏
-Plugin 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 " csv 文件支持
-Plugin 'chrisbra/csv.vim'
+Plug 'chrisbra/csv.vim'
 " 环境替换插件，比如“替换为<
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 " 异步实时执行代码
-Plugin 'metakirby5/codi.vim'
+Plug 'metakirby5/codi.vim'
 " 异步命令行执行代码，quickfix 显示
-Plugin 'skywind3000/asyncrun.vim'
-"Plugin 'tell-k/vim-autopep8'
+Plug 'skywind3000/asyncrun.vim'
+"Plug 'tell-k/vim-autopep8'
 "python 缩进
-"Plugin 'dantezhu/indent-python.vim'
+"Plug 'dantezhu/indent-python.vim'
 "vim 中文文档
-" Plugin 'yianwillis/vimcdoc'
+" Plug 'yianwillis/vimcdoc'
 " 自动配对符号
-" Plugin 'auto-pairs'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'neoclide/coc.nvim'
+" Plug 'auto-pairs'
+Plug 'easymotion/vim-easymotion'
+Plug 'neoclide/coc.nvim'
 
-call vundle#end()            " vundle 插件管理结束
+call plug#end()            " vundle 插件管理结束
 filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和文件类型相关脚本
 
 "================== rainbow 配置 =================

@@ -31,18 +31,15 @@ esac
 # clone thie repo
 git clone --depth 1 https://github.com/feng409/vimrc.git $HOME/.vim
 
-# install plugin by vundle
-git clone --depth 1 https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim  
-
-# alter git clone just for depth 1
-sed -i "s/git clone/git clone --depth 1/" $HOME/.vim/bundle/Vundle.vim/autoload/vundle/installer.vim 
+# install plugin by plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # source vim
 mv $HOME/.vimrc $HOME/.vimrc.bak
 ln -s $HOME/.vim/vimrc $HOME/.vimrc 
 
-vim +PluginInstall +qall
+vim +PlugInstall +quitall
 
-# install YouCompleteMe
-cd $HOME/.vim/bundle/YouCompleteMe \
-	&& $python install.py --clang-completer
+# install coc
+cd $HOME/.vim/plugged/coc.nvim && yarn install
