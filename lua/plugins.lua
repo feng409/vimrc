@@ -107,7 +107,10 @@ return require('packer').startup(function(use)
     -- 类似 easymotion 的快速跳转
     use { 'phaazon/hop.nvim', branch = 'v2', config = function() require("plugin_config.hop") end }
 
-    use { 'neoclide/coc.nvim', run = 'yarn install', config = function() require("plugin_config.coc") end }
+    use { 'neoclide/coc.nvim', run = 'yarn install --frozen-lockfile', config = function() require("plugin_config.coc") end }
+    use { 'xiyaowong/coc-sumneko-lua', run = 'yarn install --frozen-lockfile', after="coc.nvim"}
+    use { 'fannheyward/coc-pyright', run = 'yarn install --frozen-lockfile', after="coc.nvim"}
+    use { 'weirongxu/coc-kotlin', run = 'yarn install --frozen-lockfile', after="coc.nvim"}
     -- 格式化
     use 'prettier/vim-prettier'
 
