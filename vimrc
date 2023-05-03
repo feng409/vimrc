@@ -23,6 +23,10 @@ call plug#begin()
 Plug 'ervandew/supertab'
 Plug 'VundleVim/Vundle.vim'
 Plug 'gmarik/vundle'
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+
 "Plug 'Shougo/neocomplete.vim'
 "树形结构目录插件
 Plug 'scrooloose/nerdtree'
@@ -105,8 +109,8 @@ let g:rainbow_active = 1
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " ======== 设置自动生成的文本信息 ============
-let g:vimrc_author='chemf' 
-let g:vimrc_email='eoyohe@gmail.com' 
+let g:vimrc_author='chemf'
+let g:vimrc_email='eoyohe@gmail.com'
 let g:vimrc_homepage='eoyohe.cn'
 nmap <F4> :AuthorInfoDetect<cr>
 
@@ -247,7 +251,7 @@ augroup END
 
 
 nmap <C-H>  :w<cr> :bp<cr>
-nmap <C-L>  :w<cr> :bn<cr> 
+nmap <C-L>  :w<cr> :bn<cr>
 nmap <M-L>  :tabmove +<cr>
 nmap <M-H>  :tabmove -<cr>
 nmap <C-M>  :only<cr>
