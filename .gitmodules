@@ -1,3 +1,0 @@
-[submodule "vundle"]
-	path = vundle
-	url = /home/feng/.vim/bundle/Vundle.vim
