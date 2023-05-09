@@ -87,8 +87,8 @@ return require('packer').startup(function(use)
     use 'metakirby5/codi.vim'
     -- 异步命令行执行代码，quickfix 显示
     use { 'skywind3000/asyncrun.vim', config = function()
-        local vimrc = vim.fn.stdpath("config") .. "/lua/plugin_config/asyncrun.vim"
-        vim.cmd.source(vimrc)
+        -- local vimrc = vim.fn.stdpath("config") .. "/lua/plugin_config/asyncrun.vim"
+        -- vim.cmd.source(vimrc)
     end }
     use {'ericbn/vim-solarized', config = function () vim.cmd[[colorscheme solarized]] end}
 
