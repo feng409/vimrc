@@ -90,7 +90,7 @@ return require('packer').startup(function(use)
         -- local vimrc = vim.fn.stdpath("config") .. "/lua/plugin_config/asyncrun.vim"
         -- vim.cmd.source(vimrc)
     end }
-    use {'ericbn/vim-solarized', config = function () vim.cmd[[colorscheme solarized]] end}
+    use { 'ericbn/vim-solarized', config = function() vim.cmd [[colorscheme solarized]] end }
 
     -- 语法高亮
     use {
@@ -108,9 +108,16 @@ return require('packer').startup(function(use)
     use { 'phaazon/hop.nvim', branch = 'v2', config = function() require("plugin_config.hop") end }
 
     use { 'neoclide/coc.nvim', run = 'yarn install --frozen-lockfile', config = function() require("plugin_config.coc") end }
-    use { 'xiyaowong/coc-sumneko-lua', run = 'yarn install --frozen-lockfile', after="coc.nvim"}
-    use { 'fannheyward/coc-pyright', run = 'yarn install --frozen-lockfile', after="coc.nvim"}
-    use { 'weirongxu/coc-kotlin', run = 'yarn install --frozen-lockfile', after="coc.nvim"}
+    -- LSP
+    use { 'xiyaowong/coc-sumneko-lua', run = 'yarn install --frozen-lockfile', after = "coc.nvim" }
+    use { 'fannheyward/coc-pyright', run = 'yarn install --frozen-lockfile', after = "coc.nvim" }
+    use { 'weirongxu/coc-kotlin', run = 'yarn install --frozen-lockfile', after = "coc.nvim" }
+    -- 代码片段引擎
+    use { 'neoclide/coc-snippets', 
+        run = 'yarn install --frozen-lockfile',
+        requires = { 'rafamadriz/friendly-snippets' },
+        after = "coc.nvim",
+    }
     -- 格式化
     use 'prettier/vim-prettier'
 

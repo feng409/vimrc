@@ -21,4 +21,11 @@
 	},
 	"git.addGBlameToVirtualText": true,
 	"sumneko-lua.enableNvimLuaDev": true,
+    "snippets.priority": 100,
+    "snippets.ultisnips.directories": [
+        "~/.config/nvim/snippets/UltiSnips"
+    ],
+    "snippets.textmateSnippetsRoots": [
+        "~/.config/nvim/snippets/textmate"
+    ],
 }

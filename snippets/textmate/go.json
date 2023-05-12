@@ -1,0 +1,17 @@
+{
+  "t.Fatal": {
+    "prefix": "err.tf",
+    "body": "if err != nil {\n\tt.Fatal(err)\n}",
+    "description": "Snippet for t.Fatal()"
+  },
+  "returnerr": {
+    "prefix": "reerr",
+    "body": "return err",
+    "description": "Snippet for return err"
+  },
+  "returnerrn": {
+    "prefix": "reerr,",
+    "body": "return nil, err",
+    "description": "Snippet for return err"
+  }
+}
