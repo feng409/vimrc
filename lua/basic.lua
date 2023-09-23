@@ -46,3 +46,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
     command = "silent cd %:p:h",
     desc = "进入vim自动切换对应目录"
 })
+
+-- 使用系统剪切板
+vim.opt.clipboard = "unnamedplus"
