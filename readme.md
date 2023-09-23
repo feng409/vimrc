@@ -7,6 +7,12 @@
 - 插件原则上尽量用 `lua` 插件，配置过长情况下单独放在 `plugin_config` 目录后，在 `plugins.lua` 插件处进行 `require` 加载
 - 配置尽量用 `lua` 写，但对于 `VimScript` 语言实现的插件，配置保持用 `VimScript` 方便从插件 `readme.md` 复制粘贴配置。
 
+## Installation
+
+```shell
+git clone -b neovim https://github.com/feng409/vimrc.git $HOME/.config/nvim
+```
+
 ## Structure
 
 ```shell

@@ -28,4 +28,5 @@
     "snippets.textmateSnippetsRoots": [
         "~/.config/nvim/snippets/textmate"
     ],
+    "snippets.ultisnips.pythonPrompt": false,
 }
