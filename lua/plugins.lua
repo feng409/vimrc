@@ -122,7 +122,7 @@ return require('packer').startup(function(use)
     use 'prettier/vim-prettier'
 
     -- 查找面版
-    use { 'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    use { 'nvim-telescope/telescope.nvim', tag = '0.1.4',
         requires = { 'nvim-lua/plenary.nvim' },
         config = function() require("plugin_config.telescope") end,
     }
