@@ -1,26 +1,45 @@
 {
-	"languageserver": {
-		"golang": {
-			// "args": ["serve", "-debug", "0.0.0.0:8484", "-rpc.trace"],
-			"command": "gopls",
-			"rootPatterns": [
-				"go.mod"
-			],
-			"filetypes": [
-				"go"
-			]
-		},
+    "languageserver": {
+        "golang": {
+            // "args": ["serve", "-debug", "0.0.0.0:8484", "-rpc.trace"],
+            "command": "gopls",
+            "rootPatterns": [
+                "go.mod"
+            ],
+            "filetypes": [
+                "go"
+            ]
+        },
         "bash": {
             "command": "bash-language-server",
-            "args": ["start"],
-            "filetypes": ["sh"]
+            "args": [
+                "start"
+            ],
+            "filetypes": [
+                "sh"
+            ]
+        },
+        "clangd": {
+            "command": "clangd",
+            "rootPatterns": [
+                "compile_flags.txt",
+                "compile_commands.json"
+            ],
+            "filetypes": [
+                "c",
+                "cc",
+                "cpp",
+                "c++",
+                "objc",
+                "objcpp"
+            ]
         }
-	},
-	"go.goplsOptions": {
-		"completeUnimported": true
-	},
-	"git.addGBlameToVirtualText": true,
-	"sumneko-lua.enableNvimLuaDev": true,
+    },
+    "go.goplsOptions": {
+        "completeUnimported": true
+    },
+    "git.addGBlameToVirtualText": true,
+    "sumneko-lua.enableNvimLuaDev": true,
     "snippets.priority": 100,
     "snippets.ultisnips.directories": [
         "~/.config/nvim/snippets/UltiSnips"
