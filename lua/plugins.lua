@@ -112,6 +112,7 @@ return require('packer').startup(function(use)
     use { 'xiyaowong/coc-sumneko-lua', run = 'yarn install --frozen-lockfile', after = "coc.nvim" }
     use { 'fannheyward/coc-pyright', run = 'yarn install --frozen-lockfile', after = "coc.nvim" }
     use { 'weirongxu/coc-kotlin', run = 'yarn install --frozen-lockfile', after = "coc.nvim" }
+    use { 'neoclide/coc-pairs', run = 'yarn install --frozen-lockfile', after = "coc.nvim" }
     -- 代码片段引擎
     use { 'neoclide/coc-snippets',
         run = 'yarn install --frozen-lockfile',
@@ -128,15 +129,22 @@ return require('packer').startup(function(use)
     }
     -- 终端
     use { 'akinsho/toggleterm.nvim', tag = '*', config = function() require("plugin_config.toggleterm") end }
+
     -- ex 命令浮动窗口
+    -- use {
+    --     'VonHeikemen/fine-cmdline.nvim',
+    --     requires = {
+    --         { 'MunifTanjim/nui.nvim' }
+    --     },
+    --     config = function ()
+    --         vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})
+    --     end
+    -- }
+
+    -- 终端复制转义序列
     use {
-        'VonHeikemen/fine-cmdline.nvim',
-        requires = {
-            { 'MunifTanjim/nui.nvim' }
-        },
-        config = function ()
-            vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})
-        end
+        'ojroques/nvim-osc52', 
+        config = function() require("plugin_config.osc52") end,
     }
 
     if packer_bootstrap then
