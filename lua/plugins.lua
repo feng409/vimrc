@@ -90,7 +90,9 @@ return require('packer').startup(function(use)
         -- local vimrc = vim.fn.stdpath("config") .. "/lua/plugin_config/asyncrun.vim"
         -- vim.cmd.source(vimrc)
     end }
+
     use { 'ericbn/vim-solarized', config = function() vim.cmd [[colorscheme solarized]] end }
+    use {'morhetz/gruvbox', config = function() vim.cmd.colorscheme("gruvbox") end }
 
     -- 语法高亮
     use {
@@ -146,6 +148,15 @@ return require('packer').startup(function(use)
         'ojroques/nvim-osc52', 
         config = function() require("plugin_config.osc52") end,
     }
+
+    -- 光标选中
+    use({
+        'mvllow/modes.nvim',
+        tag = 'v0.2.0',
+        config = function()
+            require('modes').setup()
+        end
+    })
 
     if packer_bootstrap then
         require('packer').sync()

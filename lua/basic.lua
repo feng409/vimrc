@@ -49,3 +49,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 
 -- 使用系统剪切板
 vim.opt.clipboard = "unnamedplus"
+
+vim.cmd([[
+autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+]])

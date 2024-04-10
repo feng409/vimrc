@@ -44,7 +44,9 @@
     "snippets.ultisnips.directories": [
         "~/.config/nvim/snippets/UltiSnips"
     ],
+
     "snippets.textmateSnippetsRoots": [
         "~/.config/nvim/snippets/textmate"
-    ]
+    ],
+    "snippets.ultisnips.pythonPrompt": false
 }

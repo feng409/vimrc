@@ -13,6 +13,7 @@
 
 -- vim.keymap.set("n", "za", ":xa<cr>", {silent = true})
 vim.keymap.set("n", "zq", ":quitall!<cr>", {silent = true})
+vim.keymap.set("n", "cq", ":cquit!<cr>", {silent = true})
 vim.keymap.set("n", "<F2>", ":set paste<cr>", {silent = true})
 vim.keymap.set("x", "p", "pgvy", {silent = true})
 vim.keymap.set("n", "<C-H>", ":bp<cr>", {silent = false})

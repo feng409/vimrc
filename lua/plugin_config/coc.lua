@@ -81,9 +81,13 @@ keyset("n", "<leader>f", "<Plug>(coc-format-selected)", { silent = true })
 
 
 -- Setup formatexpr specified filetype(s)
+vim.cmd [[
+  autocmd BufRead,BufNewFile *.jsonld setfiletype json
+]]
+vim.g.coc_filetype_map = { json5 = 'json' }
 vim.api.nvim_create_autocmd("FileType", {
     group = "CocGroup",
-    pattern = "typescript,json",
+    pattern = "typescript,json,json5",
     command = "setl formatexpr=CocAction('formatSelected')",
     desc = "Setup formatexpr specified filetype(s)."
 })
@@ -158,6 +162,7 @@ keyset("x", "<C-s>", "<Plug>(coc-range-select)", { silent = true })
 
 -- Add `:Format` command to format current buffer
 vim.api.nvim_create_user_command("Format", "call CocAction('format')", {})
+vim.api.nvim_create_autocmd({ "BufWritePre", }, { pattern = { "*.go", "*.py" }, callback = function () vim.cmd.Format() end})
 
 -- " Add `:Fold` command to fold current buffer
 vim.api.nvim_create_user_command("Fold", "call CocAction('fold', <f-args>)", { nargs = '?' })
@@ -190,4 +195,3 @@ keyset("n", "<space>j", ":<C-u>CocNext<cr>", opts)
 keyset("n", "<space>k", ":<C-u>CocPrev<cr>", opts)
 -- Resume latest coc list
 keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
-
