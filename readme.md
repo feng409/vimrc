@@ -31,3 +31,9 @@ git clone -b neovim https://github.com/feng409/vimrc.git $HOME/.config/nvim
     ├── plugins.lua       // 插件依赖管理，基于 packer.nvim，插件配置也基于 config 字段管理
     └── plugin_config     // 对于配置太长的插件单独列出配置文件在此
 ```
+
+## Dependencies
+
+- [fd](https://github.com/sharkdp/fd) 
+- [fzf](https://github.com/junegunn/fzf)
+

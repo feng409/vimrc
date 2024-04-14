@@ -16,6 +16,7 @@ lspconfig.gopls.setup({
 lspconfig.lua_ls.setup({})
 lspconfig.pyright.setup({})
 lspconfig.jsonls.setup({})
+lspconfig.clangd.setup({}) -- setup but not ensure installed. should MasonInstall clangd if need
 
 
 -- Global mappings.
