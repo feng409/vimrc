@@ -11,4 +11,3 @@ require("nvim-tree").setup({
         ignore = false,
     }
 })
-vim.keymap.set('', '<c-t>', ':NvimTreeToggle<cr>', { remap = true, silent = true })

@@ -51,8 +51,10 @@ vim.api.nvim_create_autocmd("VimEnter", {
 -- 使用系统剪切板
 vim.opt.clipboard = "unnamedplus"
 
+-- 设置背景透明
 vim.cmd([[
 autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 ]])
+vim.cmd.colorscheme("solarized")
 
 vim.diagnostic.config({ signs = false }) -- 禁止 diagnostic 信息展示在 linenum 上，不然 insert/normal 模式切换刷新晃眼睛

@@ -25,15 +25,19 @@ vim.opt.rtp:prepend(lazypath)
 
 return require('lazy').setup({
     -- 树形结构目录插件
-    { 'nvim-tree/nvim-tree.lua', dependencies = { "nvim-tree/nvim-web-devicons" }, config = true },
+    {
+        'nvim-tree/nvim-tree.lua',
+        keys = { { "<C-T>", "<cmd>NvimTreeToggle<cr>" } },
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function() require('plugin_config.nvim-tree') end
+    },
 
     -- 代码注释插件
-    { 'numToStr/Comment.nvim',   config = true },
-    --markdown语法高亮插件
-    'plasticboy/vim-markdown',
+    { 'numToStr/Comment.nvim',     config = true },
+    -- 'plasticboy/vim-markdown', -- deprecated. treesitter supported markdown
 
     -- airline 的 vcs支持
-    'tpope/vim-fugitive',
+    -- 'tpope/vim-fugitive',
 
     -- bufferline
     { "akinsho/bufferline.nvim",   dependencies = { "nvim-tree/nvim-web-devicons", "moll/vim-bbye" }, config = true },
@@ -49,11 +53,11 @@ return require('lazy').setup({
     -- 作者信息插件
     {
         'feng409/AuthorInfo',
+        keys = { { '<F4>', '<cmd>AuthorInfoDetect<CR>', silent = true } },
         config = function()
             vim.g.vimrc_author = 'chemf'
             vim.g.vimrc_email = 'eoyohe@gmail.com'
             vim.g.vimrc_homepage = 'eoyohe.cn'
-            vim.keymap.set("n", "<F4>", ":AuthorInfoDetect<cr>", { silent = true })
         end
     },
 
@@ -62,14 +66,15 @@ return require('lazy').setup({
     -- 'tpope/vim-surround', -- deprecated: 太复杂了，不常用。 环境替换插件，比如“替换为<
     -- { 'skywind3000/asyncrun.vim' }, -- deprecated: 不如用 tmux. 异步命令行执行代码，quickfix 显示
 
-    { 'ericbn/vim-solarized',  config = function() vim.cmd [[colorscheme solarized]] end },
-    -- {'morhetz/gruvbox', config = function() vim.cmd.colorscheme("gruvbox") end },
+    { 'ericbn/vim-solarized', lazy = true }, -- colorscheme solarized
+    { 'morhetz/gruvbox',      lazy = true }, -- colorscheme gruvbox
 
     -- 语法高亮
     {
         "nvim-treesitter/nvim-treesitter",
         dependencies = { 'p00f/nvim-ts-rainbow' },
         build = ":TSUpdate",
+        event = "VeryLazy",
         config = function() require("plugin_config.nvim-treesitter") end
     },
 
@@ -77,9 +82,8 @@ return require('lazy').setup({
     {
         'stevearc/aerial.nvim',
         opts = {},
-        keys = {
-            { "<C-Y>", "<cmd>AerialToggle!<cr>", desc = "outline window" },
-        },
+        lazy = true,
+        keys = {{ "<C-Y>", "<cmd>AerialToggle!<cr>", desc = "outline window" }},
         -- Optional dependencies
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
@@ -155,9 +159,9 @@ return require('lazy').setup({
     },
 
     -- 终端复制转义序列
-    { 'ojroques/nvim-osc52', config = function() require("plugin_config.osc52") end },
+    { 'ojroques/nvim-osc52',   config = function() require("plugin_config.osc52") end },
 
-    { 'mvllow/modes.nvim',   version = 'v0.2.0',                                    config = true }, -- 光标选中, 算了还不如用 iterm2 的 Find Cursor 确定光标位置
+    { 'mvllow/modes.nvim',     version = 'v0.2.0',                                        config = true }, -- 光标选中, 算了还不如用 iterm2 的 Find Cursor 确定光标位置
 
     {
         'kevinhwang91/nvim-bqf',
@@ -169,7 +173,7 @@ return require('lazy').setup({
             require('bqf').setup({
                 auto_enable = true,
                 auto_resize_height = true,
-                func_map = { fzffilter = 'a', openc='<CR>', drop='o' },
+                func_map = { fzffilter = 'a', openc = '<CR>', drop = 'o' },
             })
         end
     },
