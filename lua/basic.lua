@@ -39,9 +39,9 @@ vim.o.shiftwidth = 4
 -- 设置tab键为空格,制表符为noexpandtab
 vim.o.expandtab = true
 -- 折叠方式为根据语义
-vim.o.foldmethod = 'syntax'
+-- vim.o.foldmethod = 'syntax'
 -- 打开文件是默认不折叠代码
-vim.o.foldlevelstart = 99
+-- vim.o.foldlevelstart = 99
 
 vim.api.nvim_create_autocmd("VimEnter", {
     command = "silent cd %:p:h",
@@ -56,5 +56,17 @@ vim.cmd([[
 autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 ]])
 vim.cmd.colorscheme("solarized")
+
+-- not work, I don't know why
+-- vim.opt.listchars = {
+--     space = "⋅",
+--     eol = "↴",
+--     tab = "▎_",
+--     -- tab = "|_>",
+--     trail = "•",
+--     extends = "❯",
+--     precedes = "❮",
+--     nbsp = "",
+-- }
 
 vim.diagnostic.config({ signs = false }) -- 禁止 diagnostic 信息展示在 linenum 上，不然 insert/normal 模式切换刷新晃眼睛

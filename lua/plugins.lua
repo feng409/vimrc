@@ -83,7 +83,7 @@ return require('lazy').setup({
         'stevearc/aerial.nvim',
         opts = {},
         lazy = true,
-        keys = {{ "<C-Y>", "<cmd>AerialToggle!<cr>", desc = "outline window" }},
+        keys = { { "<C-Y>", "<cmd>AerialToggle!<cr>", desc = "outline window" } },
         -- Optional dependencies
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
@@ -175,6 +175,24 @@ return require('lazy').setup({
                 auto_resize_height = true,
                 func_map = { fzffilter = 'a', openc = '<CR>', drop = 'o' },
             })
+        end
+    },
+
+    {
+        'kevinhwang91/nvim-ufo',
+        dependencies = 'kevinhwang91/promise-async',
+        config = function() require("plugin_config.ufo") end
+    },
+
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = {},
+        ft = "python",
+        config = function()
+            require("ibl").setup {
+                scope = { enabled = false },
+            }
         end
     },
 })
