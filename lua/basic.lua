@@ -50,11 +50,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
 
 -- 使用系统剪切板
 vim.opt.clipboard = "unnamedplus"
--- autocmd FileType qf nnoremap <buffer><silent> <esc> :quit<cr>
-vim.api.nvim_create_autocmd(
-  "FileType", {
-  pattern={"qf"},
-  command=[[nnoremap <buffer> <CR> <CR>:cclose<CR>]]})
 
 vim.cmd([[
 autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
