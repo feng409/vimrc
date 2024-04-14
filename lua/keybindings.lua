@@ -19,10 +19,24 @@ vim.keymap.set("n", "<F2>", ":set paste<cr>", { silent = true })
 vim.keymap.set("x", "p", "pgvy", { silent = true })
 vim.keymap.set("n", "<C-H>", ":bp<cr>", { silent = false })
 vim.keymap.set("n", "<C-L>", ":bn<cr>", { silent = false })
-vim.keymap.set("n", "<C-M>", ":only<cr>", { silent = true })
+-- vim.keymap.set("n", "<C-M>", ":only<cr>", { silent = true })
 vim.keymap.set('n', 'za', function()
     -- wirte all buffers first
     vim.api.nvim_command(":wa")
     -- quit all buffers
     vim.api.nvim_command(":qa")
 end, { remap = true })
+
+local function toggle_quickfix()
+  local windows = vim.fn.getwininfo()
+  for _, win in pairs(windows) do
+    if win["quickfix"] == 1 then
+      vim.cmd.cclose()
+      return
+    end
+  end
+  vim.cmd.copen()
+end
+
+vim.keymap.set('n', '<space>k', toggle_quickfix, { silent = true, desc = "Toggle Quickfix Window" })
+

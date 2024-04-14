@@ -24,6 +24,7 @@ vim.o.mouse = 'a'
 vim.o.nocompatible = true
 -- 搜索不要高亮
 vim.o.hlsearch = false
+vim.opt.ignorecase = true
 
 -- 设置黑色背景
 vim.o.background = "dark"
@@ -49,7 +50,14 @@ vim.api.nvim_create_autocmd("VimEnter", {
 
 -- 使用系统剪切板
 vim.opt.clipboard = "unnamedplus"
+-- autocmd FileType qf nnoremap <buffer><silent> <esc> :quit<cr>
+vim.api.nvim_create_autocmd(
+  "FileType", {
+  pattern={"qf"},
+  command=[[nnoremap <buffer> <CR> <CR>:cclose<CR>]]})
 
 vim.cmd([[
 autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 ]])
+
+vim.diagnostic.config({ signs = false }) -- 禁止 diagnostic 信息展示在 linenum 上，不然 insert/normal 模式切换刷新晃眼睛

@@ -25,13 +25,10 @@ vim.opt.rtp:prepend(lazypath)
 
 return require('lazy').setup({
     -- 树形结构目录插件
-    {
-        'nvim-tree/nvim-tree.lua',
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function() require('plugin_config.nvim-tree') end
-    },
+    { 'nvim-tree/nvim-tree.lua', dependencies = { "nvim-tree/nvim-web-devicons" }, config = true },
+
     -- 代码注释插件
-    { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end },
+    { 'numToStr/Comment.nvim',   config = true },
     --markdown语法高亮插件
     'plasticboy/vim-markdown',
 
@@ -39,27 +36,15 @@ return require('lazy').setup({
     'tpope/vim-fugitive',
 
     -- bufferline
-    {
-        "akinsho/bufferline.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons", "moll/vim-bbye" },
-        config = function() require("bufferline").setup {} end
-    },
+    { "akinsho/bufferline.nvim",   dependencies = { "nvim-tree/nvim-web-devicons", "moll/vim-bbye" }, config = true },
 
     -- lualine
-    {
-        "nvim-lualine/lualine.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function() require('lualine').setup() end
-    },
+    { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" },                  config = true },
 
     -- git 代码行状态插件
     --use 'airblade/vim-gitgutter'
     --撤销记录
-    'mbbill/undotree',
-    --代码模板插件
-    --use 'aperezdc/vim-template'
-    --代码搜索工具
-    'mileszs/ack.vim',
+    -- 'mbbill/undotree',
 
     -- 作者信息插件
     {
@@ -72,30 +57,12 @@ return require('lazy').setup({
         end
     },
 
-    -- 函数栏, 支持 coc lsp ctags 等多种方式
-    {
-        'liuchengxu/vista.vim',
-        config = function()
-            local vimrc = vim.fn.stdpath("config") .. "/lua/plugin_config/vista.vim"
-            vim.cmd.source(vimrc)
-        end
-    },
-    -- csv 文件支持
-    'chrisbra/csv.vim',
-    -- 环境替换插件，比如“替换为<
-    'tpope/vim-surround',
-    -- 异步实时执行代码
-    'metakirby5/codi.vim',
-    -- 异步命令行执行代码，quickfix 显示
-    {
-        'skywind3000/asyncrun.vim',
-        config = function()
-            -- local vimrc = vim.fn.stdpath("config") .. "/lua/plugin_config/asyncrun.vim"
-            -- vim.cmd.source(vimrc)
-        end
-    },
+    'metakirby5/codi.vim', -- 异步实时执行代码
 
-    { 'ericbn/vim-solarized', config = function() vim.cmd [[colorscheme solarized]] end },
+    -- 'tpope/vim-surround', -- deprecated: 太复杂了，不常用。 环境替换插件，比如“替换为<
+    -- { 'skywind3000/asyncrun.vim' }, -- deprecated: 不如用 tmux. 异步命令行执行代码，quickfix 显示
+
+    { 'ericbn/vim-solarized',  config = function() vim.cmd [[colorscheme solarized]] end },
     -- {'morhetz/gruvbox', config = function() vim.cmd.colorscheme("gruvbox") end },
 
     -- 语法高亮
@@ -106,33 +73,71 @@ return require('lazy').setup({
         config = function() require("plugin_config.nvim-treesitter") end
     },
 
-    --use({
-    --'p00f/nvim-ts-rainbow',
-    --})
+    -- outline 函数列表，一般也用不上，但可以开一下装逼
+    {
+        'stevearc/aerial.nvim',
+        opts = {},
+        keys = {
+            { "<C-Y>", "<cmd>AerialToggle!<cr>", desc = "outline window" },
+        },
+        -- Optional dependencies
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons"
+        },
+    },
 
     -- 类似 easymotion 的快速跳转
-    { 'phaazon/hop.nvim',      branch = 'v2',                                     config = function() require(
-        "plugin_config.hop") end },
+    {
+        'phaazon/hop.nvim',
+        branch = 'v2',
+        config = function()
+            require(
+                "plugin_config.hop")
+        end,
+    },
+
+    -- LSP 管理
+    {
+        'williamboman/mason.nvim',
+        dependencies = {
+            'williamboman/mason-lspconfig.nvim', -- mason 和 原生 lspconfig 之间的兼容层
+        },
+        config = function() require("plugin_config.mason") end,
+    },
+
+    -- LSP Client 默认配置支持
+    { 'neovim/nvim-lspconfig', config = function() require("plugin_config.lspconfig") end },
+    -- 补全
+    {
+        'hrsh7th/nvim-cmp',
+        dependencies = {
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
+            {
+                'L3MON4D3/LuaSnip',
+                config = function()
+                    require("luasnip.loaders.from_vscode").lazy_load()
+                end,
+                dependencies = { "rafamadriz/friendly-snippets" }
+            },
+            'saadparwaiz1/cmp_luasnip',
+        },
+        config = function() require('plugin_config.cmp') end
+    },
 
     {
-        'neoclide/coc.nvim',
-        build = 'yarn install --frozen-lockfile',
-        config = function() require("plugin_config.coc") end,
-        dependencies = {
-            { 'xiyaowong/coc-sumneko-lua', build = 'yarn install --frozen-lockfile' },
-            { 'fannheyward/coc-pyright',   build = 'yarn install --frozen-lockfile' },
-            { 'weirongxu/coc-kotlin',      build = 'yarn install --frozen-lockfile' },
-            { 'neoclide/coc-pairs',        build = 'yarn install --frozen-lockfile' },
-
-            {
-                'neoclide/coc-snippets', -- 代码片段引擎
-                build = 'yarn install --frozen-lockfile',
-                dependencies = { 'rafamadriz/friendly-snippets' },
-            },
-        }
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = function()
+            -- insert `(` after select function or method item
+            require("nvim-autopairs").setup {}
+            local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+            require('cmp').event:on('confirm_done', cmp_autopairs.on_confirm_done())
+        end
     },
-    -- 格式化
-    'prettier/vim-prettier',
 
     -- 查找面版
     {
@@ -141,32 +146,31 @@ return require('lazy').setup({
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function() require("plugin_config.telescope") end,
     },
+
     -- 终端
-    { 'akinsho/toggleterm.nvim', version = '*', config = function() require("plugin_config.toggleterm") end },
-
-    -- ex 命令浮动窗口
-    -- use {
-    --     'VonHeikemen/fine-cmdline.nvim',
-    --     dependencies = {
-    --         { 'MunifTanjim/nui.nvim' }
-    --     },
-    --     config = function ()
-    --         vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})
-    --     end
-    -- }
-
-    -- 终端复制转义序列
     {
-        'ojroques/nvim-osc52',
-        config = function() require("plugin_config.osc52") end,
+        'akinsho/toggleterm.nvim',
+        version = '*',
+        config = function() require("plugin_config.toggleterm") end
     },
 
-    -- 光标选中
+    -- 终端复制转义序列
+    { 'ojroques/nvim-osc52', config = function() require("plugin_config.osc52") end },
+
+    { 'mvllow/modes.nvim',   version = 'v0.2.0',                                    config = true }, -- 光标选中, 算了还不如用 iterm2 的 Find Cursor 确定光标位置
+
     {
-        'mvllow/modes.nvim',
-        version = 'v0.2.0',
+        'kevinhwang91/nvim-bqf',
+        ft = 'qf',
+        dependencies = {
+            { 'junegunn/fzf', build = function() vim.fn['fzf#install']() end }
+        },
         config = function()
-            require('modes').setup()
+            require('bqf').setup({
+                auto_enable = true,
+                auto_resize_height = true,
+                func_map = { fzffilter = 'a', },
+            })
         end
     },
 })
