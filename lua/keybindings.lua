@@ -15,7 +15,7 @@
 vim.keymap.set("n", "zq", ":quitall!<cr>", { silent = true })
 vim.keymap.set("n", "cq", ":cquit!<cr>", { silent = true })
 vim.keymap.set("n", "qq", ":bd<cr>", { silent = true })
-vim.keymap.set("n", "<F2>", ":set paste<cr>", { silent = true })
+-- vim.keymap.set("n", "<F2>", ":set paste<cr>", { silent = true }) // conflict with lspconfig
 vim.keymap.set("x", "p", "pgvy", { silent = true })
 vim.keymap.set("n", "<C-H>", ":bp<cr>", { silent = false })
 vim.keymap.set("n", "<C-L>", ":bn<cr>", { silent = false })
