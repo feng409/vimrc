@@ -2,8 +2,10 @@ local cmp = require 'cmp'
 local luasnip = require('luasnip')
 
 cmp.setup({
-    preselect = cmp.PreselectMode.Item,
-    completion = { completeopt = 'menu,preview,menuone,noinsert'},
+    preselect = cmp.PreselectMode.None, -- item/none
+    completion = {
+        completeopt = 'menu,preview,menuone,noinsert',
+    },
     snippet = {
         expand = function(args)
             require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
@@ -55,7 +57,6 @@ cmp.setup({
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'luasnip' }, -- For luasnip users.
-    }, {
         { name = 'buffer' },
     })
 })
