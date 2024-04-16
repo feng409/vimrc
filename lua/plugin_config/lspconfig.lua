@@ -13,7 +13,15 @@ lspconfig.gopls.setup({
     },
 })
 -- {cmd={"gofumpt"}})
-lspconfig.lua_ls.setup({})
+lspconfig.lua_ls.setup({
+    settings = {
+        Lua = {
+            completion = {
+                callSnippet = "Replace"
+            }
+        }
+    }
+})
 lspconfig.pyright.setup({})
 lspconfig.jsonls.setup({})
 lspconfig.clangd.setup({}) -- setup but not ensure installed. should MasonInstall clangd if need

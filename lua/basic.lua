@@ -55,7 +55,6 @@ vim.opt.clipboard = "unnamedplus"
 vim.cmd([[
 autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 ]])
-vim.cmd.colorscheme("solarized")
 
 -- not work, I don't know why
 -- vim.opt.listchars = {

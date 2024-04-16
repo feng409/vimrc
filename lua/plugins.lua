@@ -24,6 +24,7 @@ vim.opt.rtp:prepend(lazypath)
 
 
 return require('lazy').setup({
+    { "folke/neodev.nvim",         opts = {},                                                         config = true }, -- neovim 内置 vim 等API文档提供，但会导致 lua completion 变慢
     -- 树形结构目录插件
     {
         'nvim-tree/nvim-tree.lua',
@@ -101,6 +102,12 @@ return require('lazy').setup({
         end,
     },
 
+    -- LSP Client 默认配置支持
+    {
+        'neovim/nvim-lspconfig',
+        dependencies = { "folke/neodev.nvim" },
+        config = function() require("plugin_config.lspconfig") end
+    },
     -- LSP 管理
     {
         'williamboman/mason.nvim',
@@ -109,9 +116,6 @@ return require('lazy').setup({
         },
         config = function() require("plugin_config.mason") end,
     },
-
-    -- LSP Client 默认配置支持
-    { 'neovim/nvim-lspconfig', config = function() require("plugin_config.lspconfig") end },
     -- 补全
     {
         'hrsh7th/nvim-cmp',
@@ -120,6 +124,7 @@ return require('lazy').setup({
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-cmdline',
+            'hrsh7th/cmp-nvim-lsp-signature-help',
             {
                 'L3MON4D3/LuaSnip',
                 config = function()
@@ -159,9 +164,9 @@ return require('lazy').setup({
     },
 
     -- 终端复制转义序列
-    { 'ojroques/nvim-osc52',   config = function() require("plugin_config.osc52") end },
+    { 'ojroques/nvim-osc52',     config = function() require("plugin_config.osc52") end },
 
-    { 'mvllow/modes.nvim',     version = 'v0.2.0',                                        config = true }, -- 光标选中, 算了还不如用 iterm2 的 Find Cursor 确定光标位置
+    -- { 'mvllow/modes.nvim',     version = 'v0.2.0',                                        config = true }, -- 光标选中, 算了还不如用 iterm2 的 Find Cursor 确定光标位置
 
     {
         'kevinhwang91/nvim-bqf',
@@ -193,6 +198,16 @@ return require('lazy').setup({
             require("ibl").setup {
                 scope = { enabled = false },
             }
+        end
+    },
+    { 'lewis6991/gitsigns.nvim', config = function() require('plugin_config.gitsigns') end },
+    {
+        'nvim-treesitter/nvim-treesitter-context',
+        config = function()
+            require("treesitter-context").setup({})
+            vim.keymap.set("n", "[c", function()
+                require("treesitter-context").go_to_context(vim.v.count1)
+            end, { silent = true })
         end
     },
 })
