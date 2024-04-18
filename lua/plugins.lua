@@ -191,14 +191,18 @@ return require('lazy').setup({
 
     {
         "lukas-reineke/indent-blankline.nvim",
-        main = "ibl",
-        opts = {},
-        ft = "python",
-        config = function()
-            require("ibl").setup {
+        event = "VeryLazy",
+        config = function(_, opts)
+            opts = {
+                whitespace = {
+                    remove_blankline_trail = false,
+                },
                 scope = { enabled = false },
             }
-        end
+            local hooks = require "ibl.hooks"
+            hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
+            require("ibl").setup(opts)
+        end,
     },
     { 'lewis6991/gitsigns.nvim', config = function() require('plugin_config.gitsigns') end },
     {
@@ -210,4 +214,14 @@ return require('lazy').setup({
             end, { silent = true })
         end
     },
+    {
+        "folke/which-key.nvim",
+        lazy = false,
+        keys = { "<leader>", "<c-r>", "<c-w>", '"', "'", "`", "c", "v", "g" },
+        cmd = "WhichKey",
+        config = function(_, opts)
+            require("which-key").setup(opts)
+        end,
+    },
+
 })

@@ -43,10 +43,10 @@ vim.o.expandtab = true
 -- 打开文件是默认不折叠代码
 -- vim.o.foldlevelstart = 99
 
-vim.api.nvim_create_autocmd("VimEnter", {
-    command = "silent cd %:p:h",
-    desc = "进入vim自动切换对应目录"
-})
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--     command = "silent cd %:p:h",
+--     desc = "进入vim自动切换对应目录"
+-- })
 
 -- 使用系统剪切板
 vim.opt.clipboard = "unnamedplus"
@@ -68,4 +68,6 @@ autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 --     nbsp = "",
 -- }
 
-vim.diagnostic.config({ signs = false }) -- 禁止 diagnostic 信息展示在 linenum 上，不然 insert/normal 模式切换刷新晃眼睛
+-- vim.diagnostic.config({ signs = false }) -- 禁止 diagnostic 信息展示在 linenum 上，不然 insert/normal 模式切换刷新晃眼睛
+vim.o.signcolumn = "yes"
+vim.g.mapleader = " "

@@ -1,13 +1,27 @@
-local gitsigns = require('gitsigns')
+local options = {
+  signs = {
+    add = { text = "│" },
+    change = { text = "│" },
+    delete = { text = "󰍵" },
+    topdelete = { text = "‾" },
+    changedelete = { text = "~" },
+    untracked = { text = "│" },
+  },
 
-vim.keymap.set('n', '<space>hd', gitsigns.diffthis)
-gitsigns.setup {
-    current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
-    current_line_blame_opts = {
-        virt_text = true,
-        virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-        delay = 50,
-        ignore_whitespace = false,
-        virt_text_priority = 100,
-    },
+  on_attach = function(bufnr)
+    local gs = package.loaded.gitsigns
+
+    local function opts(desc)
+      return { buffer = bufnr, desc = desc }
+    end
+
+    local map = vim.keymap.set
+
+    map("n", "<leader>hr", gs.reset_hunk, opts "Reset Hunk")
+    map("n", "<leader>hp", gs.preview_hunk, opts "Preview Hunk")
+    map("n", "<leader>gb", gs.blame_line, opts "Blame Line")
+  end,
 }
+
+local gitsigns = require('gitsigns')
+gitsigns.setup(options)
