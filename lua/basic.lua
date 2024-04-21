@@ -19,7 +19,7 @@ vim.o.smartindent = true
 vim.o.autoindent = true
 
 -- 鼠标支持
-vim.o.mouse = 'a'
+vim.o.mouse = "a"
 -- 去除兼容 vi 一致性
 vim.o.nocompatible = true
 -- 搜索不要高亮
@@ -50,22 +50,24 @@ vim.o.expandtab = true
 
 -- 使用系统剪切板
 vim.opt.clipboard = "unnamedplus"
+-- 禁止使用.swp文件
+vim.opt.swapfile = false
 
 -- 设置背景透明
 vim.cmd([[
 autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 ]])
 
--- not work, I don't know why
+-- vim.opt.list = true
 -- vim.opt.listchars = {
---     space = "⋅",
---     eol = "↴",
---     tab = "▎_",
---     -- tab = "|_>",
---     trail = "•",
---     extends = "❯",
---     precedes = "❮",
---     nbsp = "",
+-- 	space = "⋅",
+-- 	eol = "↴",
+-- 	tab = "▎_",
+-- 	-- tab = "|_>",
+-- 	trail = "•",
+-- 	extends = "❯",
+-- 	precedes = "❮",
+-- 	nbsp = "",
 -- }
 
 -- vim.diagnostic.config({ signs = false }) -- 禁止 diagnostic 信息展示在 linenum 上，不然 insert/normal 模式切换刷新晃眼睛

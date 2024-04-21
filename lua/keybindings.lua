@@ -17,10 +17,17 @@ vim.keymap.set("n", "cq", ":cquit!<cr>", { silent = true })
 vim.keymap.set("n", "<SPACE>q", ":bd<cr>", { silent = true })
 -- vim.keymap.set("n", "<F2>", ":set paste<cr>", { silent = true }) // conflict with lspconfig
 vim.keymap.set("x", "p", "pgvy", { silent = true })
-vim.keymap.set("n", "<C-H>", ":bp<cr>", { silent = false })
-vim.keymap.set("n", "<C-L>", ":bn<cr>", { silent = false })
+
+-- 窗口操作
+vim.keymap.set("n", "zh", ":bp<cr>", { silent = false })
+vim.keymap.set("n", "zl", ":bn<cr>", { silent = false })
+vim.keymap.set("n", "<C-h>", "<C-w>h", { silent = false })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { silent = false })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { silent = false })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { silent = false })
+
 -- vim.keymap.set("n", "<C-M>", ":only<cr>", { silent = true })
-vim.keymap.set('n', 'za', function()
+vim.keymap.set("n", "za", function()
     -- wirte all buffers first
     vim.api.nvim_command(":wa")
     -- quit all buffers
@@ -37,6 +44,4 @@ local function toggle_quickfix()
     end
     vim.cmd.copen()
 end
-vim.keymap.set('n', '<space>k', toggle_quickfix, { silent = true, desc = "Toggle Quickfix Window" })
-
-
+vim.keymap.set("n", "<space>k", toggle_quickfix, { silent = true, desc = "Toggle Quickfix Window" })
