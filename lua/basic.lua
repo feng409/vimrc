@@ -21,7 +21,7 @@ vim.o.autoindent = true
 -- 鼠标支持
 vim.o.mouse = "a"
 -- 去除兼容 vi 一致性
-vim.o.nocompatible = true
+-- vim.o.nocompatible = true
 -- 搜索不要高亮
 vim.o.hlsearch = false
 vim.opt.ignorecase = true
