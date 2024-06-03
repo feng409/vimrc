@@ -45,7 +45,7 @@ return require("lazy").setup({
     { "akinsho/bufferline.nvim", dependencies = { "nvim-tree/nvim-web-devicons", "moll/vim-bbye" }, config = true },
 
     -- lualine
-    { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }, config = true },
+    -- { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }, config = true },
 
     -- git 代码行状态插件
     --use 'airblade/vim-gitgutter'
@@ -68,6 +68,15 @@ return require("lazy").setup({
     -- 'tpope/vim-surround', -- deprecated: 太复杂了，不常用。 环境替换插件，比如“替换为<
     -- { 'skywind3000/asyncrun.vim' }, -- deprecated: 不如用 tmux. 异步命令行执行代码，quickfix 显示
 
+    {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+        config = function()
+            require("plugin_config.tokyonight")
+        end,
+    },
     { "ericbn/vim-solarized", lazy = true }, -- colorscheme solarized
     { "morhetz/gruvbox", lazy = true }, -- colorscheme gruvbox
 
@@ -276,6 +285,18 @@ return require("lazy").setup({
         },
         config = function()
             require("plugin_config.dap")
+        end,
+    },
+    -- lazy.nvim
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            -- "rcarriga/nvim-notify",
+        },
+        config = function()
+            require("plugin_config.noice")
         end,
     },
 })

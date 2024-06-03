@@ -2,5 +2,3 @@
 require("basic")
 require("plugins")
 require("keybindings")
-
-vim.cmd.colorscheme("solarized")
