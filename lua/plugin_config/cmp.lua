@@ -4,7 +4,7 @@ local luasnip = require("luasnip")
 cmp.setup({
     preselect = cmp.PreselectMode.None, -- item/none
     completion = {
-        completeopt = "menu,preview,menuone",
+        completeopt = "menu,preview,menuone,noselect",
     },
     snippet = {
         expand = function(args)

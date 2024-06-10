@@ -4,10 +4,7 @@ local lspconfig = require("lspconfig")
 lspconfig.gopls.setup({
     settings = {
         gopls = {
-            analyses = {
-                -- unusedparams = true,
-            },
-            -- staticcheck = true,
+            analyses = {},
             gofumpt = true,
         },
     },
@@ -25,6 +22,11 @@ lspconfig.lua_ls.setup({
 lspconfig.pyright.setup({})
 lspconfig.jsonls.setup({})
 lspconfig.clangd.setup({}) -- setup but not ensure installed. should MasonInstall clangd if need
+
+-- vue
+lspconfig.volar.setup({ filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" } })
+lspconfig.vtsls.setup({})
+-- lspconfig.tsserver.setup({})
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions

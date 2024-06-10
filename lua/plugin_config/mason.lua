@@ -5,5 +5,7 @@ require("mason-lspconfig").setup({
         "pyright",
         "gopls",
         "jsonls",
+        -- "tsserver", -- for typescript
+        -- "volar", -- for vue
     },
 })

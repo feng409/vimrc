@@ -12,9 +12,9 @@
 -- slient: 清除 ex 上显示的输入命令记录
 
 -- vim.keymap.set("n", "za", ":xa<cr>", {silent = true})
-vim.keymap.set("n", "zq", ":quitall!<cr>", { silent = true })
-vim.keymap.set("n", "cq", ":cquit!<cr>", { silent = true })
-vim.keymap.set("n", "<SPACE>q", ":bd<cr>", { silent = true })
+vim.keymap.set("n", "zq", ":quitall!<cr>", { silent = true, desc = "quitall" })
+vim.keymap.set("n", "cq", ":cquit!<cr>", { silent = true, desc = "quit vim with error code" })
+vim.keymap.set("n", "<SPACE>q", ":bd<cr>", { silent = true, desc = "quit the current window" })
 -- vim.keymap.set("n", "<F2>", ":set paste<cr>", { silent = true }) // conflict with lspconfig
 vim.keymap.set("x", "p", "pgvy", { silent = true })
 

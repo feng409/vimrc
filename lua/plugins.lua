@@ -24,13 +24,23 @@ vim.opt.rtp:prepend(lazypath)
 
 return require("lazy").setup({
     { "folke/neodev.nvim", opts = {}, config = true }, -- neovim 内置 vim 等API文档提供，但会导致 lua completion 变慢
-    -- 树形结构目录插件
     {
-        "nvim-tree/nvim-tree.lua",
-        keys = { { "<C-T>", "<cmd>NvimTreeToggle<cr>" } },
-        dependencies = { "nvim-tree/nvim-web-devicons" },
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+            -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+        },
+        cmd = { "Neotree", "Reveal" },
+        keys = {
+            { "<C-T>", "<cmd>Neotree toggle float<cr>" },
+            { "<C-Y>", "<cmd>Neotree toggle right document_symbols<cr>" },
+            { "<leader>gk", "<cmd>Neotree toggle float git_status<cr>" },
+        },
         config = function()
-            require("plugin_config.nvim-tree")
+            require("plugin_config.neotree")
         end,
     },
 
@@ -91,19 +101,6 @@ return require("lazy").setup({
         end,
     },
 
-    -- outline 函数列表，一般也用不上，但可以开一下装逼
-    {
-        "stevearc/aerial.nvim",
-        opts = {},
-        lazy = true,
-        keys = { { "<C-Y>", "<cmd>AerialToggle!<cr>", desc = "outline window" } },
-        -- Optional dependencies
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "nvim-tree/nvim-web-devicons",
-        },
-    },
-
     -- 类似 easymotion 的快速跳转
     {
         "phaazon/hop.nvim",
@@ -133,6 +130,8 @@ return require("lazy").setup({
     -- LSP 管理
     {
         "williamboman/mason.nvim",
+        -- event = "VeryLazy",
+        -- cmd = { "Mason" },-- cannot be Lazy if the lsp binaries depend on it to setup the $PATH. but it cost over 10ms, fuck
         dependencies = {
             "williamboman/mason-lspconfig.nvim", -- mason 和 原生 lspconfig 之间的兼容层
         },
@@ -143,6 +142,7 @@ return require("lazy").setup({
     -- 补全
     {
         "hrsh7th/nvim-cmp",
+        event = "VeryLazy",
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-buffer",
@@ -194,12 +194,12 @@ return require("lazy").setup({
     },
 
     -- 终端复制转义序列
-    {
-        "ojroques/nvim-osc52",
-        config = function()
-            require("plugin_config.osc52")
-        end,
-    },
+    -- {
+    --     "ojroques/nvim-osc52",
+    --     config = function()
+    --         require("plugin_config.osc52")
+    --     end,
+    -- },
 
     -- { 'mvllow/modes.nvim',     version = 'v0.2.0',                                        config = true }, -- 光标选中, 算了还不如用 iterm2 的 Find Cursor 确定光标位置
 
@@ -225,6 +225,7 @@ return require("lazy").setup({
 
     {
         "kevinhwang91/nvim-ufo",
+        -- event = "VeryLazy",
         dependencies = "kevinhwang91/promise-async",
         config = function()
             require("plugin_config.ufo")
