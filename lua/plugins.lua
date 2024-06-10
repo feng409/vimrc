@@ -292,6 +292,14 @@ return require("lazy").setup({
             require("plugin_config.noice")
         end,
     },
+
+    -- 终端复制转义序列
+    {
+        "ojroques/nvim-osc52",
+        config = function()
+            require("plugin_config.osc52")
+        end,
+    },
     -- { 'Joakker/lua-json5', build = './install.sh' },
     -- lazy.nvim
 })
