@@ -14,7 +14,8 @@
 -- vim.keymap.set("n", "za", ":xa<cr>", {silent = true})
 vim.keymap.set("n", "zq", ":quitall!<cr>", { silent = true, desc = "quitall" })
 vim.keymap.set("n", "cq", ":cquit!<cr>", { silent = true, desc = "quit vim with error code" })
-vim.keymap.set("n", "<SPACE>q", ":bd<cr>", { silent = true, desc = "quit the current window" })
+vim.keymap.set("n", "<SPACE>qq", ":bd<cr>", { silent = true, desc = "quit the current buffer" })
+vim.keymap.set("n", "<SPACE>qc", ":bd<cr>", { silent = true, desc = "close the current window" })
 -- vim.keymap.set("n", "<F2>", ":set paste<cr>", { silent = true }) // conflict with lspconfig
 vim.keymap.set("x", "p", "pgvy", { silent = true })
 
@@ -25,7 +26,7 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", { silent = false })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { silent = false })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { silent = false })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { silent = false })
-vim.keymap.set('t', '<ESC>', '<C-\\><C-n>')
+vim.keymap.set("t", "<ESC>", "<C-\\><C-n>")
 
 -- vim.keymap.set("n", "<C-M>", ":only<cr>", { silent = true })
 vim.keymap.set("n", "za", function()

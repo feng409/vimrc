@@ -3,7 +3,7 @@ require("mason-lspconfig").setup({
     ensure_installed = {
         "lua_ls",
         "pyright",
-        "debugpy",
+        -- "debugpy",
         "gopls",
         "jsonls",
         -- "tsserver", -- for typescript
