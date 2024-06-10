@@ -2,7 +2,7 @@ local cmp = require("cmp")
 local luasnip = require("luasnip")
 
 cmp.setup({
-    preselect = cmp.PreselectMode.None, -- item/none
+    preselect = cmp.PreselectMode.Item, -- item/none
     completion = {
         completeopt = "menu,preview,menuone,noselect",
     },
@@ -57,8 +57,8 @@ cmp.setup({
     sources = cmp.config.sources({
         { name = "nvim_lsp_signature_help" },
         { name = "nvim_lsp" },
-        { name = "luasnip" }, -- For luasnip users.
         { name = "buffer" },
+        { name = "luasnip" }, -- For luasnip users.
         { name = "path" },
     }),
 })

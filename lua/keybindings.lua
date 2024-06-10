@@ -25,6 +25,7 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", { silent = false })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { silent = false })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { silent = false })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { silent = false })
+vim.keymap.set('t', '<ESC>', '<C-\\><C-n>')
 
 -- vim.keymap.set("n", "<C-M>", ":only<cr>", { silent = true })
 vim.keymap.set("n", "za", function()

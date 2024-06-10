@@ -1,22 +1,31 @@
 local dap, dapui = require("dap"), require("dapui")
+local dap_python = require("dap-python")
 
-dap.adapters.python = {
-    type = "executable",
-    command = "python",
-    args = { "-m", "debugpy.adapter" },
-}
-dap.configurations.python = {
-    {
-        type = "python",
-        request = "launch",
-        name = "launch file",
-        program = "${file}",
-        pythonPath = function()
-            return "python"
-        end,
-    },
-}
-require("dap.ext.vscode").load_launchjs(nil, { cppdbg = { "c", "cpp" } })
+local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
+local python_path = mason_path .. "packages/debugpy/venv/bin/python"
+vim.notify("python_path: " .. python_path)
+dap_python.setup(python_path)
+dap_python.default_port = 38000
+
+-- dap.adapters.python = {
+--     type = "executable",
+--     command = "python",
+--     args = { "-m", "debugpy.adapter" },
+-- }
+-- dap.configurations.python = {
+--     {
+--         type = "python",
+--         request = "launch",
+--         name = "launch file",
+--         program = "${file}",
+--         pythonPath = function()
+--             return "python"
+--         end,
+--     },
+-- }
+local vsc = require("dap.ext.vscode")
+-- vsc.json_decode = require('json5').parse
+vsc.load_launchjs(nil, { cppdbg = { "c", "cpp" } })
 
 ------------------------- dap ui -------------------------
 local dap_breakpoint_color = {
@@ -101,15 +110,13 @@ dapui.setup({
             -- You can change the order of elements in the sidebar
             elements = {
                 -- Provide IDs as strings or tables with "id" and "size" keys
-                {
-                    id = "scopes",
-                    size = 0.25, -- Can be float or integer > 1
-                },
-                { id = "breakpoints", size = 0.25 },
-                { id = "stacks", size = 0.25 },
+                ---- size Can be float or integer > 1
+                -- { id = "breakpoints", size = 0.25 },
                 { id = "watches", size = 0.25 },
+                { id = "stacks", size = 0.25 },
+                { id = "scopes", size = 0.5 },
             },
-            size = 40,
+            size = 60,
             position = "left", -- Can be "left" or "right"
         },
         {
@@ -117,7 +124,7 @@ dapui.setup({
                 "repl",
                 -- "console",
             },
-            size = 10,
+            size = 20,
             position = "bottom", -- Can be "bottom" or "top"
         },
     },

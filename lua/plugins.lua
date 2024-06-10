@@ -1,4 +1,4 @@
---[[=============================================================================
+--[[=============================================================================plugins
 #     FileName: plugins.lua
 #         Desc: plugin list
 #       Author: chemf
@@ -55,7 +55,7 @@ return require("lazy").setup({
     { "akinsho/bufferline.nvim", dependencies = { "nvim-tree/nvim-web-devicons", "moll/vim-bbye" }, config = true },
 
     -- lualine
-    -- { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }, config = true },
+    { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }, config = true },
 
     -- git 代码行状态插件
     --use 'airblade/vim-gitgutter'
@@ -193,14 +193,6 @@ return require("lazy").setup({
         end,
     },
 
-    -- 终端复制转义序列
-    -- {
-    --     "ojroques/nvim-osc52",
-    --     config = function()
-    --         require("plugin_config.osc52")
-    --     end,
-    -- },
-
     -- { 'mvllow/modes.nvim',     version = 'v0.2.0',                                        config = true }, -- 光标选中, 算了还不如用 iterm2 的 Find Cursor 确定光标位置
 
     {
@@ -282,7 +274,7 @@ return require("lazy").setup({
             "nvim-neotest/nvim-nio",
             { "theHamsta/nvim-dap-virtual-text", config = true },
             { "leoluz/nvim-dap-go", config = true }, -- dap's adapters and configurations for go
-            -- { "leoluz/nvim-dap-python", config = true }, -- dap's adapters and configurations for python
+            { "mfussenegger/nvim-dap-python" }, -- dap's adapters and configurations for python
         },
         config = function()
             require("plugin_config.dap")
@@ -300,4 +292,6 @@ return require("lazy").setup({
             require("plugin_config.noice")
         end,
     },
+    -- { 'Joakker/lua-json5', build = './install.sh' },
+    -- lazy.nvim
 })

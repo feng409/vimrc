@@ -27,15 +27,15 @@ vim.o.hlsearch = false
 vim.opt.ignorecase = true
 
 -- 设置黑色背景
-vim.o.background = "dark"
+-- vim.o.background = "dark"
 
 -- utf8
 vim.g.encoding = "UTF-8"
 vim.o.fileencoding = "utf-8"
 
-vim.o.tabstop = 4
+vim.o.tabstop = 2
 -- 使用 shift 每层缩进的空格数。
-vim.o.shiftwidth = 4
+vim.o.shiftwidth = 2
 -- 设置tab键为空格,制表符为noexpandtab
 vim.o.expandtab = true
 -- 折叠方式为根据语义
@@ -61,7 +61,7 @@ autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 -- vim.opt.list = true
 -- vim.opt.listchars = {
 -- 	space = "⋅",
--- 	eol = "↴",
+-- 	-- eol = "↴",
 -- 	tab = "▎_",
 -- 	-- tab = "|_>",
 -- 	trail = "•",

@@ -5,7 +5,7 @@ require("toggleterm").setup({
     -- 在当前buffer的下方打开新终端
     -- direction = "float",
     direction = "horizontal",
-    size = 10,
+    size = 15,
 })
 
 local commands = {
