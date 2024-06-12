@@ -246,15 +246,6 @@ return require("lazy").setup({
         end,
     },
     {
-        "nvim-treesitter/nvim-treesitter-context",
-        config = function()
-            require("treesitter-context").setup({})
-            vim.keymap.set("n", "[c", function()
-                require("treesitter-context").go_to_context(vim.v.count1)
-            end, { silent = true })
-        end,
-    },
-    {
         "folke/which-key.nvim",
         lazy = false,
         keys = { "<leader>", "<c-r>", "<c-w>", '"', "'", "`", "c", "v", "g" },
@@ -264,6 +255,7 @@ return require("lazy").setup({
         end,
     },
     {
+        -- select 窗口用 nui 绘制
         "stevearc/dressing.nvim",
         opts = {},
     },
