@@ -122,7 +122,7 @@ dapui.setup({
         {
             elements = {
                 "repl",
-                -- "console",
+                "console",
             },
             size = 20,
             position = "bottom", -- Can be "bottom" or "top"
@@ -139,3 +139,4 @@ vim.keymap.set(
 vim.keymap.set({ "i", "n", "v" }, "<F7>", "<cmd>lua require'dap'.step_into()<CR>", { silent = true, noremap = true })
 vim.keymap.set({ "i", "n", "v" }, "<F8>", "<cmd>lua require'dap'.step_over()<CR>", { silent = true, noremap = true })
 vim.keymap.set({ "i", "n", "v" }, "<F9>", "<cmd>lua require'dap'.continue()<CR>", { silent = true, noremap = true })
+vim.keymap.set({ "i", "n", "v" }, "<C-F9>", "<cmd>DapUIToggle<CR>", { silent = true, noremap = true })

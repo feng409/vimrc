@@ -28,6 +28,12 @@ lspconfig.volar.setup({ filetypes = { "typescript", "javascript", "javascriptrea
 lspconfig.vtsls.setup({})
 -- lspconfig.tsserver.setup({})
 
+vim.diagnostic.config({
+    virtual_text = {
+        severity = vim.diagnostic.severity.ERROR,
+    },
+})
+
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
