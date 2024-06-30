@@ -302,4 +302,5 @@ return require("lazy").setup({
     },
     -- { 'Joakker/lua-json5', build = './install.sh' },
     -- lazy.nvim
+    { "echasnovski/mini.surround", version = false, config = true }, -- 对选中区域加上双引号等操作
 })
