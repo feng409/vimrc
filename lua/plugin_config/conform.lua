@@ -3,7 +3,7 @@ local config = {
     formatters_by_ft = {
         lua = { "stylua" },
         -- Conform will run multiple formatters sequentially
-        python = { "isort", "ruff_format" },
+        python = { "isort", "autopep8" },
         -- Use a sub-list to run only the first available formatter
         javascript = { { "prettierd", "prettier" } },
         go = { "goimports", "gofumpt" },
@@ -19,6 +19,9 @@ local config = {
             args = { "-l", "mysql" }, -- default basic
         },
         c = { "clang-format" },
+        autopep8 = {
+            prepend_args = { "--max-line-length", "200" },
+        },
     },
     -- format_on_save = {
     --   -- These options will be passed to conform.format()

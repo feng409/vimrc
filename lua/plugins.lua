@@ -87,6 +87,7 @@ return require("lazy").setup({
             require("plugin_config.tokyonight")
         end,
     },
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000, config = true },
     { "ericbn/vim-solarized", lazy = true }, -- colorscheme solarized
     { "morhetz/gruvbox", lazy = true }, -- colorscheme gruvbox
 
