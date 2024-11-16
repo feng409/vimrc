@@ -299,4 +299,12 @@ return require("lazy").setup({
     {
         "sindrets/diffview.nvim",
     },
+    {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function()
+            require("plugin_config.copilot")
+        end,
+    },
 })
