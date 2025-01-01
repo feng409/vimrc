@@ -296,9 +296,7 @@ return require("lazy").setup({
     -- { 'Joakker/lua-json5', build = './install.sh' },
     -- lazy.nvim
     { "echasnovski/mini.surround", version = false, config = true }, -- 对选中区域加上双引号等操作
-    {
-        "sindrets/diffview.nvim",
-    },
+    { "sindrets/diffview.nvim" },
     {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
@@ -306,5 +304,15 @@ return require("lazy").setup({
         config = function()
             require("plugin_config.copilot")
         end,
+    },
+    {
+        "CopilotC-Nvim/CopilotChat.nvim",
+        branch = "canary",
+        dependencies = {
+            { "github/copilot.vim" },
+            { "nvim-lua/plenary.nvim" },
+        },
+        build = "make tiktoken",
+        opts = {},
     },
 })
