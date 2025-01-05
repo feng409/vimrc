@@ -140,39 +140,76 @@ return require("lazy").setup({
             require("plugin_config.mason")
         end,
     },
-    -- 补全
-    {
-        "hrsh7th/nvim-cmp",
-        event = "VeryLazy",
-        dependencies = {
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
-            "hrsh7th/cmp-cmdline",
-            "hrsh7th/cmp-nvim-lsp-signature-help",
-            {
-                "L3MON4D3/LuaSnip",
-                config = function()
-                    require("luasnip.loaders.from_vscode").lazy_load()
-                end,
-                dependencies = { "rafamadriz/friendly-snippets" },
-            },
-            "saadparwaiz1/cmp_luasnip",
-        },
-        config = function()
-            require("plugin_config.cmp")
-        end,
-    },
+    -- -- 补全
+    -- {
+    --     "hrsh7th/nvim-cmp",
+    --     event = "VeryLazy",
+    --     dependencies = {
+    --         "hrsh7th/cmp-nvim-lsp",
+    --         "hrsh7th/cmp-buffer",
+    --         "hrsh7th/cmp-path",
+    --         "hrsh7th/cmp-cmdline",
+    --         "hrsh7th/cmp-nvim-lsp-signature-help",
+    --         {
+    --             "L3MON4D3/LuaSnip",
+    --             config = function()
+    --                 require("luasnip.loaders.from_vscode").lazy_load()
+    --             end,
+    --             dependencies = { "rafamadriz/friendly-snippets" },
+    --         },
+    --         "saadparwaiz1/cmp_luasnip",
+    --     },
+    --     config = function()
+    --         require("plugin_config.cmp")
+    --     end,
+    -- },
 
+    -- {
+    --     "windwp/nvim-autopairs",
+    --     event = "InsertEnter",
+    --     config = function()
+    --         -- insert `(` after select function or method item
+    --         require("nvim-autopairs").setup({})
+    --         local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+    --         require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+    --     end,
+    -- },
     {
-        "windwp/nvim-autopairs",
-        event = "InsertEnter",
-        config = function()
-            -- insert `(` after select function or method item
-            require("nvim-autopairs").setup({})
-            local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-            require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
-        end,
+        "saghen/blink.cmp",
+        -- optional: provides snippets for the snippet source
+        dependencies = "rafamadriz/friendly-snippets",
+
+        version = "*",
+        ---@module 'blink.cmp'
+        ---@type blink.cmp.Config
+        opts = {
+            -- 'default' for mappings similar to built-in completion
+            -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
+            -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
+            -- See the full "keymap" documentation for information on defining your own keymap.
+            keymap = {
+                preset = "enter",
+                ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+                ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+            },
+            completion = {
+                list = { selection = "auto_insert" },
+            },
+
+            appearance = {
+                -- Sets the fallback highlight groups to nvim-cmp's highlight groups
+                -- Useful for when your theme doesn't support blink.cmp
+                -- Will be removed in a future release
+                use_nvim_cmp_as_default = true,
+                -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+                -- Adjusts spacing to ensure icons are aligned
+                -- nerd_font_variant = "mono",
+            },
+            sources = {
+                default = { "lsp", "path", "snippets", "buffer" },
+            },
+        },
+        opts_extend = { "sources.default" },
     },
 
     -- 查找面版
