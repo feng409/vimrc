@@ -3,8 +3,9 @@
 -- Add any additional options here
 
 -- 设置背景透明
-vim.cmd([[
-autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
-]])
+-- vim.cmd([[
+-- autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+-- ]])
 
 vim.opt.relativenumber = false
+vim.g.lazyvim_python_lsp = "pyright"

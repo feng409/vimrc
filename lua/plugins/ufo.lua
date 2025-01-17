@@ -1,7 +1,7 @@
 return {
   "kevinhwang91/nvim-ufo",
   -- event = "VeryLazy",
-  enabled = false,
+  -- enabled = false,
   dependencies = "kevinhwang91/promise-async",
   config = function()
     vim.o.foldcolumn = "0" -- 行号上面的折叠标记层数，0不展示
