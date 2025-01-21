@@ -1,0 +1,18 @@
+return {
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+    config = function()
+      require("tokyonight").setup({
+        transparent = true,
+        styles = {
+          -- Background styles. Can be "dark", "transparent" or "normal"
+          sidebars = "transparent",
+          floats = "transparent",
+        },
+      })
+    end,
+  },
+}
