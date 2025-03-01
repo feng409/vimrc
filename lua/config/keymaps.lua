@@ -3,6 +3,7 @@
 -- Add any additional keymaps here
 vim.keymap.set("n", "zq", ":quitall!<cr>", { silent = true, desc = "quitall" })
 vim.keymap.set("n", "cq", ":cquit!<cr>", { silent = true, desc = "quit vim with error code" })
+vim.keymap.set("n", "<leader>r", ":FzfLua resume<cr>", { silent = true, desc = "FzfLua resume" })
 -- vim.keymap.set("n", "<SPACE>qq", ":bd<cr>", { silent = true, desc = "quit the current buffer" })
 -- vim.keymap.set("n", "<SPACE>qc", ":bd<cr>", { silent = true, desc = "close the current window" })
 
