@@ -12,3 +12,4 @@ vim.g.lazyvim_python_lsp = "pyright"
 vim.o.compatible = false
 vim.opt.timeoutlen = 30 -- 默认是1000ms
 vim.opt.ttimeoutlen = 5 -- 默认是50ms
+vim.opt.swapfile = false
