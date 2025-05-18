@@ -1,6 +1,4 @@
 return {
-  --python
-  { import = "lazyvim.plugins.extras.lang.python" },
   {
     "williamboman/mason.nvim",
     -- enabled = false,

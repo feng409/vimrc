@@ -1,7 +1,5 @@
 return {
   { "folke/flash.nvim", enabled = false },
-
-  { import = "lazyvim.plugins.extras.ai.copilot" },
   {
     "folke/snacks.nvim",
     opts = {
