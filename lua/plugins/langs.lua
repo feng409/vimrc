@@ -1,6 +1,6 @@
 return {
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     -- enabled = false,
     opts = { ensure_installed = { "pyright" } },
   },
