@@ -14,3 +14,33 @@ vim.diagnostic.config({
   underline = { severity = { min = vim.diagnostic.severity.ERROR } },
   virtual_lines = { severity = { min = vim.diagnostic.severity.ERROR } },
 })
+
+-- Auto-run yunshu go mod tidy when opening a Go project with go.mod and go.sum
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+  pattern = "*.go",
+  callback = function()
+    local buf = vim.api.nvim_get_current_buf()
+    local bufpath = vim.api.nvim_buf_get_name(buf)
+    if bufpath == "" then
+      return
+    end
+    local cwd = vim.fn.fnamemodify(bufpath, ":p:h")
+    local gomod = vim.fn.findfile("go.mod", cwd .. ";") --[[@as string]]
+    local gosum = vim.fn.findfile("go.sum", cwd .. ";") --[[@as string]]
+    if gomod ~= "" and gosum ~= "" then
+      local root = vim.fn.fnamemodify(gomod, ":p:h")
+      if not vim.g["_gomod_tidy_ran_" .. root] then
+        vim.g["_gomod_tidy_ran_" .. root] = true
+        vim.fn.jobstart("go mod tidy", {
+          cwd = root,
+          on_exit = function(_, code)
+            if code ~= 0 then
+              vim.notify("go mod tidy failed (exit " .. code .. ")", vim.log.levels.WARN, { title = "Go Mod Tidy" })
+            end
+          end,
+        })
+      end
+    end
+  end,
+  group = vim.api.nvim_create_augroup("GoModTidy", { clear = true }),
+})
