@@ -10,10 +10,10 @@ return {
   },
   opts = {
     sources = { "filesystem", "buffers", "git_status", "document_symbols" },
-  },
-  window = {
-    mappings = {
-      ["o"] = { "open", nowait = true, config = { expand_nested_files = true } }, -- expand nested file takes precedence
+    window = {
+      mappings = {
+        ["o"] = { "open", nowait = true, config = { expand_nested_files = true } }, -- expand nested file takes precedence
+      },
     },
   },
 }
