@@ -12,7 +12,6 @@ vim.diagnostic.config({
   virtual_text = { severity = { min = vim.diagnostic.severity.ERROR } },
   signs = { severity = { min = vim.diagnostic.severity.ERROR } },
   underline = { severity = { min = vim.diagnostic.severity.ERROR } },
-  virtual_lines = { severity = { min = vim.diagnostic.severity.ERROR } },
 })
 
 -- Auto-run yunshu go mod tidy when opening a Go project with go.mod and go.sum

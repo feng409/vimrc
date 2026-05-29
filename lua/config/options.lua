@@ -7,6 +7,8 @@
 -- autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 -- ]])
 
+vim.opt.clipboard = "unnamedplus" -- 原生 OSC52 支持 (Neovim 0.10+)
+vim.lsp.inlay_hint.enable(false) -- Neovim 0.11 原生 API
 vim.opt.relativenumber = false
 vim.g.lazyvim_python_lsp = "pyright"
 vim.opt.timeoutlen = 30 -- 默认是1000ms
