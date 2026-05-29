@@ -9,6 +9,8 @@
 
 vim.opt.clipboard = "unnamedplus" -- 原生 OSC52 支持 (Neovim 0.10+)
 vim.lsp.inlay_hint.enable(false) -- Neovim 0.11 原生 API
+vim.opt.scrolloff = 0 -- LazyVim 默认4，改为0可滚动到边缘
+vim.opt.sidescrolloff = 0 -- 同上，水平方向
 vim.opt.relativenumber = false
 vim.g.lazyvim_python_lsp = "pyright"
 vim.opt.timeoutlen = 30 -- 默认是1000ms
