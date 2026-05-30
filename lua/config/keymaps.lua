@@ -11,6 +11,6 @@ vim.keymap.set("n", "<leader>r", ":FzfLua resume<cr>", { silent = true, desc = "
 -- vim.keymap.set("n", "zl", ":bn<cr>", { silent = false })
 
 vim.keymap.set("n", "za", function()
-  vim.api.nvim_command(":wa")
-  vim.api.nvim_command(":qa")
+  vim.cmd.wa()
+  vim.cmd.qa()
 end, { remap = true })
