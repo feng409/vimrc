@@ -14,6 +14,15 @@ vim.diagnostic.config({
   underline = { severity = { min = vim.diagnostic.severity.ERROR } },
 })
 
+-- Disable diagnostics for markdown files (markdownlint noise)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  group = vim.api.nvim_create_augroup("MarkdownNoDiag", { clear = true }),
+  callback = function(args)
+    vim.diagnostic.enable(false, { bufnr = args.buf })
+  end,
+})
+
 -- Auto-run yunshu go mod tidy when opening a Go project with go.mod and go.sum
 vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
   pattern = "*.go",
