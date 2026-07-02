@@ -14,3 +14,8 @@ vim.keymap.set("n", "za", function()
   vim.cmd.wa()
   vim.cmd.qa()
 end, { remap = true })
+
+-- Terminal mode: <C-h/j/k/l> -> 退出终端 insert 再切窗口
+for _, k in ipairs({ "h", "j", "k", "l" }) do
+  vim.keymap.set("t", "<C-" .. k .. ">", "<C-\\><C-n><C-w>" .. k, { silent = true, desc = "Go to " .. k .. " window" })
+end
